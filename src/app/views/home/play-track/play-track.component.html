@@ -1,0 +1,65 @@
+
+<div class="top">
+  <h1>
+    Songs
+  </h1>
+</div>
+<div class="main">
+  <div class="list-items" *ngFor="let item of products" (click)="view(item)">
+
+    <div class="item" *ngIf="item.FeaturedImageUrl">
+      <div class="image">
+        <img [src]="item.FeaturedImageUrl" alt="">
+      </div>
+  
+    </div>
+  
+    <div class="item">
+      <h1>
+        {{item.Name}}
+      </h1>
+    </div>
+  
+  
+  </div>
+
+  <div class="buttons">
+   
+
+    <!-- <button (click)="stop()">
+      <span class="material-icons">
+        skip_previous
+        </span>
+    </button> -->
+    <button (click)="play()">
+
+      <span class="material-icons">
+        play_arrow
+        </span>
+    </button>
+    <button (click)="pause()">
+      <span class="material-icons">
+        pause
+        </span>
+    </button>
+    <button (click)="stop()">
+      <span class="material-icons">
+        stop
+        </span>
+    </button>
+    <!-- <button (click)="play()">
+      <span class="material-icons">
+        skip_next
+        </span>
+    </button> -->
+  </div>
+
+  <div class="progress">
+    <span>{{currentTime}}</span>
+    <input class="progress" type="range" min="0" [max]="duration" [value]="seek" step="0.01" (input)="forwad($event)">
+    <span class="duration">{{duration}}</span>
+  </div>
+  <!-- <div class="step">
+    <input type="range" min="0" max="1" step="0.01" (input)="setVolume($event)">
+  </div> -->
+</div>

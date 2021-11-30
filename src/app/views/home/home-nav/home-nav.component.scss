@@ -1,0 +1,171 @@
+@import '../../../../assets/styles/color';
+$tab-size : 6em;
+
+.top-nav {
+  height: 4em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: $white;
+  z-index: 2000;
+  color: $black;
+  display: grid;
+  grid-template-columns: 80% auto;
+  box-shadow: $box-shadow;
+  padding-top: .5em;
+
+  .col {
+    padding: 0 1em;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .menu {
+    text-align: left;
+    color: $primary;
+
+  }
+}
+
+.tabs {
+  // background: $white;
+  // position: fixed;
+  top: 1em;
+  width: 100%;
+  height: $tab-size;
+  padding: 1em;
+  display: grid;
+  z-index: 1000;
+  grid-template-columns: repeat(4, 25%);
+  display: none;
+
+  .tab {
+    color: $white;
+    // padding: 1em .1em;
+    text-align: center;
+    font-size: .8em;
+    padding-bottom: 1em;
+    width: $tab-size;
+    height: $tab-size;
+    background: $primary-purple;
+    border-radius: .7em;
+    position: relative;
+
+    .material-icons {
+      display: block;
+      font-size: 2.5em;
+      margin-bottom: .3em;
+    }
+
+    .border {
+      position: absolute;
+      width: $tab-size;
+      height: .4em;
+      background: $white;
+      bottom: -1em;
+      left: 0;
+      border-radius: 50%;
+      opacity: .5;
+    }
+  }
+}
+
+
+.Luxury,
+.Sites,
+.Nature,
+.Hiphop {
+
+  // background: $white;
+  // color: $primary !important;
+  .border {
+    background: $primary-purple !important;
+    box-shadow: $box-shadow;
+
+  }
+}
+
+
+.side-nav,
+.side-nav-overlay {
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  background: $mid;
+  z-index: 5000;
+  animation: moveInLeft .2s ease-out 0s;
+  animation-fill-mode: backwards;
+  padding-top: 1em;
+
+  .nav-item {
+    img {
+      width: 100%;
+      padding: 1em;
+    }
+
+    h1 {
+      font-size: 1.2em;
+      color: $cloud;
+      padding: 0 1.1em;
+      margin-top: 2em;
+
+    }
+  }
+}
+
+.side-nav-overlay {
+  width: 100%;
+  z-index: 5000;
+  background: rgba(48, 46, 39, 0.596);
+  animation: fadeIn .1s ease-out 0s;
+  animation-fill-mode: backwards;
+
+}
+
+.profile {
+  background: $cloud;
+  color: $mid;
+  width: 3em;
+  height: 3em;
+  border-radius: 3em;
+  padding: .7em;
+  margin: .5em auto;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.hi {
+  text-transform: capitalize;
+  text-align: center;
+  color: $cloud;
+  margin-bottom: 1em;
+
+  a {
+    color: $cloud;
+    text-decoration: none;
+  }
+}
+
+.user {
+  padding: 2em;
+  padding-top: 6em;
+  padding-bottom: 0;
+
+
+}
+
+h3 {
+  span {
+    display: block;
+    font-size: 0.7em;
+    font-weight: 500;
+    padding: .5em 0;
+    color: $primary;
+  }
+}

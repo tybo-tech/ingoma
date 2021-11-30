@@ -1,0 +1,4 @@
+<div class="main">
+  <app-sign-up-modal *ngIf="user && showForm" [user]="user"></app-sign-up-modal>
+  <app-how-it-works *ngIf="!showForm" (doneIntro)="done($event)" ></app-how-it-works>
+</div>

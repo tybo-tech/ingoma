@@ -1,0 +1,236 @@
+<div *ngIf="product" class="all">
+  <div class="product">
+    <div class="main-image">
+      <img [src]="product.FeaturedImageUrl" alt="">
+      <button class="back" (click)="back()">
+        <span class="material-icons">
+          chevron_left
+        </span>
+      </button>
+    </div>
+    <div class="product-information">
+      <h1 class="h1">
+        {{product.Name}}
+
+        <span class="price">
+          {{product.RegularPrice | currency:'R'}}
+        </span>
+
+  
+        <span class="location" *ngIf="product.Province && product.City">
+          <span class="material-icons">
+            location_on
+          </span>
+          {{product.Province }},  {{product.City }}
+        </span>
+
+        <audio controls>
+          <source [src]="product.Code" type="audio/ogg">
+          <source [src]="product.Code" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+      </h1>
+
+      <div class="booking" *ngIf="booking.BookingDate && booking.TimeId">
+        <div class="action">
+          <button *ngIf="product.ParentCategoryName != 'Shopping'" class="mat-primary add-to-cart" mat-button
+            color="primary" (click)="addToCart()">
+            Reserve
+          </button>
+          <button *ngIf="product.ParentCategoryName == 'Shopping'" class="mat-primary add-to-cart" mat-button
+            color="primary" (click)="addToCart()">
+            Add to cart
+          </button>
+        </div>
+
+      </div>
+
+
+      <div *ngIf="showBookingDateTime" class="initaite-booking">
+        <!-- <p>
+        <span class="material-icons">
+          location_on
+        </span>
+        <a href="https://goo.gl/maps/Ab6cGS5XVkUFB68J8" >Zoweh directions</a>
+      </p> -->
+
+        <!-- Book now pay at the saloon -->
+
+        <div class="booking">
+          <div class="input">
+            <label *ngIf="product.ParentCategoryName != 'Shopping'" for="">Reservation date</label>
+            <label *ngIf="product.ParentCategoryName == 'Shopping'" for="">Choose product collection date</label>
+            <input [(ngModel)]="booking.BookingDate" type="date">
+          </div>
+        </div>
+
+        <div class="booking" *ngIf="booking.BookingDate">
+          <div class="input">
+            <label for="">Available time slots</label>
+            <div class="times">
+              <div class="time" *ngFor="let item of times; let i = index" (click)="selectTime(item)"
+                [ngClass]="item.Class">
+                {{item.TimeId}}
+              </div>
+            </div>
+          </div>
+
+
+          <div class="action">
+            <button *ngIf="product.ParentCategoryName != 'Shopping'" class="mat-primary add-to-cart"
+              [disabled]="!booking.BookingDate || !booking.TimeId" mat-button color="primary" (click)="book()">
+              Reserve
+            </button>
+            <button *ngIf="product.ParentCategoryName == 'Shopping'" class="mat-primary add-to-cart"
+              [disabled]="!booking.BookingDate || !booking.TimeId" mat-button color="primary" (click)="book()">
+              Add to cart
+            </button>
+          </div>
+
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="overlay" *ngIf="showModal" (click)="closeModal()"></div>
+<div class="mosdal" *ngIf="showModal">
+  <div class="close" (click)="closeModal()">
+    <span class="material-icons">
+      west
+    </span> {{modalHeading}}
+  </div>
+
+  <div class="body">
+    <app-sign-up-modal (userLoggedInDone)="userLoggedInDone($event)"></app-sign-up-modal>
+  </div>
+</div>
+
+<div *ngIf="showSuccess" class="success-modal">
+  <h1>
+    <span class="material-icons check">
+      check_circle_outline
+    </span>
+  </h1>
+  <h1>
+    {{product.Name}} added to booking successfully.
+  </h1>
+  <div class="summary">
+    <div class="item product-item" *ngFor="let item of booking.BookingItems; let i = index">
+      <div class="name">
+        {{item.ServiceName}} - {{item.ServicePrice  | currency:'R'}}
+      </div>
+
+      <div class="action">
+        <span class="material-icons" (click)="deleteItem(item, i)">
+          delete_forever
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="summary">
+    <div class="item">
+      <span class="material-icons">
+        date_range
+      </span>
+      {{booking.BookingDate | date: 'shortDate'}} | {{booking.TimeId}}
+    </div>
+
+
+    <div class="item">
+
+      <span class="material-icons">
+        payments
+      </span>
+      {{booking.TotalAmount  | currency:'R'}}
+    </div>
+
+    <!-- <div class="item">
+
+      <a href="https://goo.gl/maps/Ab6cGS5XVkUFB68J8">
+        <span class="material-icons">
+          location_on
+        </span>
+        {{booking.Place}}
+      </a>
+    </div> -->
+
+    <div class="item">
+
+      <a class="cancel" (click)="cancel()">
+        <span class="material-icons">
+          cancel
+        </span>
+        Cancel booking
+      </a>
+    </div>
+
+
+    <div class="item">
+
+      <a class="info" (click)="back()">
+        <span class="material-icons">
+          playlist_add_check
+        </span>
+        Add another service
+      </a>
+    </div>
+
+
+    <div class="item">
+
+      <a class="checkout" (click)="checkout()">
+        <span class="material-icons">
+          check_circle_outline
+        </span>
+        Checkout
+      </a>
+    </div>
+  </div>
+
+
+
+</div>
+
+<div class="success-modal done-model" *ngIf="showDone">
+  <h1>
+    <span class="material-icons check">
+      check_circle_outline
+    </span>
+  </h1>
+  <h1>
+    Your booking was successful
+  </h1>
+
+  <button (click)="back()">Home</button>
+  <button (click)="bookings()">Go to my bookings</button>
+</div>
+
+
+<div class="no-charge" *ngIf="showNoCharge">
+
+</div>
+<div class="no-charge-modal" *ngIf="showNoCharge">
+  <div class="image">
+    <img src="assets/images/no-scale.svg" alt="">
+  </div>
+
+  <div class="notes">
+    <h1>
+      Please Note:
+      <span>
+        We are going to charge you the laundry at the saloon because the price depends on the weight load.
+      </span>
+    </h1>
+
+    <div class="ok" (click)="toggleShowNoCharge()">
+      Ok
+    </div>
+  </div>
+</div>

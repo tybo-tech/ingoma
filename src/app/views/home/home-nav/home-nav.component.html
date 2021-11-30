@@ -1,0 +1,101 @@
+<div class="top-nav">
+
+  <div class="menu col">
+    <span class="material-icons" (click)="toggle()">
+      menu
+    </span>
+  </div>
+  <div class="menu col">
+    <img src="assets/images/common/logo.png" alt="">
+  </div>
+</div>
+<div class="user">
+<h3>
+  Hello {{user?.Name}} 👋
+  <span>
+    Welcome to the best  south african music
+  </span>
+</h3>
+</div>
+<div class="tabs">
+  <div class="tab" (click)="tab('Hip hop')" [ngClass]="Hiphop">
+    <span class="material-icons">
+      hiking
+    </span>
+    Hip hop 
+    <div class="border"></div>
+  </div>
+  <div class="tab" (click)="tab('Nature')" [ngClass]="Nature">
+    <span class="material-icons">
+      local_florist
+    </span>
+    Nature 
+    <div class="border"></div>
+  </div>
+  <div class="tab" (click)="tab('Sights & tours')" [ngClass]="Sites">
+    <span class="material-icons">
+      tour
+    </span>
+    Sights & tours
+    <div class="border"></div>
+  </div>
+  <div class="tab" (click)="tab('Luxury')" [ngClass]="Luxury">
+    <span class="material-icons">
+      star
+    </span>
+    Luxury 
+    <div class="border"></div>
+  </div>
+</div>
+
+
+<div class="side-nav-overlay" *ngIf="showMenu" (click)="toggle()"></div>
+
+
+<div class="side-nav" *ngIf="showMenu">
+
+  <div class="nav-item" *ngIf="user">
+    <div class="profile">
+      {{user.Name[0]}}{{user.Name[1]}}
+    </div>
+
+    <div class="hi">
+      Hi, {{user.Name}}
+    </div>
+    <a (click)="logout()">
+      <img src="assets/images/log.svg" alt="">
+    </a>
+  </div>
+  <div class="nav-item" *ngIf="!user">
+    <a (click)="login()">
+      <img src="assets/images/login.svg" alt="">
+    </a>
+  </div>
+  <div class="nav-item" *ngIf="!user">
+    <a (click)="register()">
+      <img src="assets/images/register.svg" alt="">
+    </a>
+  </div>
+  <div class="nav-item">
+    <h1>
+      Follow us.
+    </h1>
+    <a href="https://www.facebook.com/cervidaetravels">
+      <img src="assets/images/zfb.svg" alt="">
+    </a>
+  </div>
+
+  <div class="nav-item">
+    <a href="https://www.instagram.com/cervidaetravels/?hl=en">
+      <img src="assets/images/zinsta.svg" alt="">
+    </a>
+  </div>
+
+  <div class="nav-item">
+    <a (click)="contact()">
+      <img src="assets/images/cus.svg" alt="">
+    </a>
+  </div>
+</div>
+
+

@@ -1,0 +1,45 @@
+<div class="main">
+  <div *ngIf="user" class="success-modal">
+    <div class="back-btn">
+      <span class="material-icons" (click)="back()">
+        chevron_left
+      </span>
+    </div>
+    <h1>
+      Hello, {{user.Name}}
+    </h1>
+    <div class="summary">
+      <div class="item" (click)="goto('bookings')">
+
+        <span class="material-icons">
+          date_range
+        </span>
+        Bookings
+      </div>
+      <div class="item" (click)="goto('customers')">
+
+        <span class="material-icons">
+          supervisor_account
+        </span>
+        Customers
+      </div>
+
+
+
+      <div class="item" (click)="goto('products')">
+
+        <span class="material-icons">
+          list
+        </span>
+        Experiences
+      </div>
+      <div class="item" (click)="goto('time-slots')">
+
+        <span class="material-icons">
+          av_timer
+        </span>
+        Ulbums
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,104 @@
+<app-home-nav [showNav]="true" (navAction)="tab($event)"></app-home-nav>
+
+
+
+<div class="main-list" *ngIf="products">
+
+  <div class="search">
+    <input type="text" placeholder="Search experiences...">
+  </div>
+
+  <div class="heading">
+    <h4>
+      {{heading}}
+    </h4>
+  </div>
+
+  <!-- <div class="filters" *ngIf="cat ==='saloon'">
+    <div class="filter"  *ngFor="let category of categories; let i = index" [ngClass]="category.Class"  (click)="selectCategory(i)">
+      {{category.CategoryName}}
+    </div>
+  </div> -->
+  <div class="all-items">
+
+    <div class="list-items" *ngFor="let item of products" (click)="view(item)">
+
+      <div class="item" *ngIf="item.FeaturedImageUrl">
+        <div class="image">
+          <img [src]="item.FeaturedImageUrl" alt="">
+        </div>
+
+        <div class="details">
+          <h1>
+            {{item.Name}}
+          </h1>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="more"  (click)="viewAll(cat)">
+    All  {{cat}}
+  </div> -->
+
+
+  <!-- <div class="all-items">
+
+    <div class="list-items" *ngFor="let item of products2" (click)="view(item)">
+
+      <div class="item" *ngIf="item.FeaturedImageUrl">
+        <img [src]="item.FeaturedImageUrl" alt="">
+        <h1>
+          {{item.Name}}
+          <span class="code">
+            {{item.RegularPrice  | currency:'R'}} <i *ngIf="cat ==='laundry'">/ Kg</i>
+          </span>
+      
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="more"  (click)="viewAll(cat)">
+    All  {{cat2}}
+  </div> -->
+
+
+</div>
+
+
+<div class="menu" *ngIf="user">
+  <div class="item">
+    <a routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+
+      🏠 Home
+    </a>
+  </div>
+
+  <div class="item">
+    <a routerLink="/my-bookings" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+      📅 My Bookings
+    </a>
+  </div>
+  <div class="item">
+    <a routerLink="/my-profile" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+
+      👤 My Profile
+    </a>
+  </div>
+</div>
+
+<div class="player" *ngIf="product">
+  <audio controls>
+    <source [src]="product.Code" type="audio/ogg">
+    <source [src]="product.Code" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <ngx-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false" 
+    muted="muted" [displayPlaylist]="msaapDisplayPlayList" (trackEnded)="onEnded($event)"
+        [displayVolumeControls]="msaapDisplayVolumeControls" [disablePositionSlider]="msaapDisablePositionSlider" 
+        [expanded]="true"></ngx-audio-player>
+</div>
+<!-- <app-dash-loader *ngIf="showLoader"></app-dash-loader> -->

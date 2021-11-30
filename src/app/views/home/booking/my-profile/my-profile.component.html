@@ -1,0 +1,51 @@
+<div class="main">
+  <div *ngIf="user" class="success-modal">
+    <div class="back-btn">
+      <span class="material-icons" (click)="back()">
+        chevron_left
+      </span>
+    </div>
+    <h1>
+      My profile
+    </h1>
+    <div class="summary">
+      <div class="item">
+        <img *ngIf="user.Dp" [src]="user.Dp" alt="" class="user-dp">
+        <img *ngIf="!user.Dp" src="assets/images/common/user.svg" alt="" class="user-dp">
+      </div>
+      <div class="item">
+        <div class="name">
+          {{user.Name}}   {{user.Surname}} 
+        </div>
+      </div>
+      <div class="item">
+
+        <span class="material-icons">
+          date_range
+        </span>
+         Joined {{user.CreateDate | date: 'shortDate'}} 
+      </div>
+
+      <div class="item">
+        <div class="name">
+          {{user.Email}}  
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="name">
+          {{user.PhoneNumber}}   
+        </div>
+      </div>
+
+      <div class="item" (click)="back()">
+        <div class="name">
+          <span class="material-icons">
+            chevron_left
+          </span>
+       <b>Discover services</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

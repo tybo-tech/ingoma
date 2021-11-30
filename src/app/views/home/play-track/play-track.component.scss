@@ -1,0 +1,91 @@
+@import '../../../../assets/styles/color';
+.top{
+  h1{
+    margin: 0;
+    padding: .5em;
+    text-align: center;
+    color: $white;
+    border-bottom: 1px solid $white;
+    font-weight: 600;
+    font-size: 1.2em;
+  }
+}
+.main {
+  background: none;
+
+  .list-items {
+    display: grid;
+    grid-template-columns: 4em auto;
+    background: none;
+    margin: 1em;
+    border-bottom: 1px solid #A13F8B;
+    padding: .5em;
+
+    .item {
+      .image {
+        width: 3em;
+        height: 2em;
+        overflow: hidden;
+        border-radius: .7em;
+
+        img {
+          width: 100%;
+          border-radius: .7em;
+        }
+      }
+
+
+      h1 {
+        font-size: 1em;
+        font-weight: 300;
+        padding: .5em;
+        color: $white;
+      }
+    }
+
+  }
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  padding: .5em;
+  // border: 1px solid wheat;
+  margin: .5em;
+  position: fixed;
+  bottom: 1em;
+  width: 100%;
+  left: 0;
+  z-index: 1000;
+
+  button{
+    width: 4em;
+    border-radius: 15em;
+    background: $linear-gradient;
+    color: $white;
+    border: 2px solid #A13F8B ;
+    margin: 0 auto;
+    .material-icons{
+      top: .1em;
+    }
+  }
+}
+
+.progress{
+  position: fixed;
+  bottom: 10em;
+  width: 100%;
+  left: 0;
+  z-index: 1000;
+  span{
+    padding: .5em;
+    color: $white;
+
+  }
+
+  .duration{
+    padding-left: 6em;
+
+  }
+}
+

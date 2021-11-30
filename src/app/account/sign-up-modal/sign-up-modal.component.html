@@ -1,0 +1,64 @@
+<!-- <app-loader [showLoader]="showLoader" *ngIf="showLoader"></app-loader> -->
+<div class="form-item">
+  <h1>
+   Let's work together, become our partner.
+  </h1>
+  </div>
+  <div class="form-item">
+    <label class="center" for="name">Uplaod your company <b>Logo</b> </label>
+  
+    <div class="upload-preview">
+      <div class="upload">
+        <!-- <label for="name">Product image</label> -->
+        <input type="file"  accept="image/png, image/jpeg" #file placeholder="Choose file" multiple (change)="uploadFile(file.files)"
+          style="display:none;">
+       <div class="round-btn" *ngIf="!user.Dp">
+        <span class="material-icons  user-dp"   (click)="file.click()">
+          crop_original
+        </span>
+       </div>
+      </div>
+      <div class="preview"  (click)="file.click()">
+        <img *ngIf="user.Dp" [src]="user.Dp" alt="">
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-item">
+    <label for="name">Your company Name *</label>
+    <input type="search" [(ngModel)]="user.CompanyName" placeholder="Shop/Brand name">
+  </div>
+  
+  <div class="form-item">
+    <label for="name">Your Full Name *</label>
+    <input type="search" [(ngModel)]="user.Name" placeholder="The shop owner or shop admin name">
+  </div>
+  
+  <!-- <div class="form-item">
+    <label for="name">Your Surname</label>
+    <input type="text" [(ngModel)]="user.Surname" placeholder="The shop owner or shop admin surname">
+  </div> -->
+
+  <div class="form-item">
+    <label for="name">Your Phone Number</label>
+    <input type="tel" [(ngModel)]="user.PhoneNumber" placeholder="The shop owner or shop admin phone number.">
+  </div>
+  
+  <div class="form-item">
+    <label for="name">Your Email</label>
+    <input type="search" [(ngModel)]="user.Email" placeholder="The shop owner or shop admin email address.">
+  </div>
+  
+  <div class="form-item p6">
+    <label for="name">Password</label>
+    <input type="password" [(ngModel)]="user.Password" placeholder="e.g. 084 001 0100">
+  </div>
+  
+  
+  
+  
+  
+  <button mat-button class="more" [disabled]="!user.Name" type="button" (click)="save()">
+    🏡 Create your company
+  </button>
+  
